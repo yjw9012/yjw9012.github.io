@@ -400,15 +400,28 @@ $(document).ready(function(){
 		var client = $(this).prev().find(".client").html();
 		var social = $(this).prev().find(".social").html();
 
-		var html = '<div id="portfolio_info">'+
-						'<div class="info_icon"><i class="icon-info-sign"></i></div>'+
-						'<div class="details">'+
-							'<h2><span class="text">'+title+'</span><i class="icon-remove close_portfolio_info"></i></h2>'+
-							'<p>'+description+'</p>'+
-							'<div class="client"><strong>Client:</strong> '+client+'</div>'+
-							'<div class="link">'+link+'<div class="social"><span class="share_text">or share it:</span>'+social+'</div></div>'+
-						'</div>'+
-					'</div>';
+		if(social === undefined) {
+			var html = '<div id="portfolio_info">'+
+							'<div class="info_icon"><i class="icon-info-sign"></i></div>'+
+							'<div class="details">'+
+								'<h2><span class="text">'+title+'</span><i class="icon-remove close_portfolio_info"></i></h2>'+
+								'<p>'+description+'</p>'+
+								'<div class="client"><strong>Main Languages:</strong> '+client+'</div>'+
+								'<div class="link">'+link+'</div>'+
+							'</div>'+
+						'</div>';
+		}
+		else {
+			var html = '<div id="portfolio_info">'+
+							'<div class="info_icon"><i class="icon-info-sign"></i></div>'+
+							'<div class="details">'+
+								'<h2><span class="text">'+title+'</span><i class="icon-remove close_portfolio_info"></i></h2>'+
+								'<p>'+description+'</p>'+
+								'<div class="client"><strong>Main Languages:</strong> '+client+'</div>'+
+								'<div class="link">'+link+'<div class="social"><span class="share_text">or visit:</span>'+social+'</div></div>'+
+							'</div>'+
+						'</div>';
+		}
 
 		$("#portfolio_page #portfolio_info").remove();
 
