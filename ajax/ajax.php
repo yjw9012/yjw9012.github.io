@@ -3,7 +3,7 @@
 	   die();
 	}
 
-	$from = 'yjw9012@hotmail.com';
+	$from = 'yjw9012@gmail.com';
 	$subject = 'Subject';
 
 
