@@ -768,9 +768,14 @@
 	    	<div class="details">
 	    		<h2>LibreOffice</h2>
 	    		<p>Open Source Contribution</p>
-	    		<div class="link"><a href="http://www.libreoffice.org/" target="_blank">Go to project</a></div>
+	    		<div class="link"><a href="https://wiki.documentfoundation.org/Development" target="_blank">Go to project</a></div>
 	    		<div class="client">C++</div>
-	    		<div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non magna eu leo placerat accumsan. Maecenas cursus augue id tincidunt sagittis. Duis mattis massa sit amet ipsum laoreet, et elementum felis vulputate. Nam convallis nibh elit, ac consequat diam faucibus a.</div>
+	    		<div class="description">I am currently fixing bugs and working on feature enhancement requests reported in the <a href="https://bugs.freedesktop.org/" target="_blank">Bugzilla</a>.<br>
+	    		My goal is to become a member of the 'Committers' group and get unrestricted commit access by committing a few more successful patches. Then, I will be able to commit directly to LibreOffice master branch and help other new developers to push/merge patches.<br><br>
+	    		Here's a list of bugs/requests I have worked on and submitted patches about:<br>
+	    		<a href="https://bugs.freedesktop.org/show_bug.cgi?id=72995" target="_blank">fdo#72995</a> - Goal Seek when Formula cell does not contain formula it is unclear which cell is error message referenced at<br>
+	    		<a href="https://bugs.freedesktop.org/show_bug.cgi?id=72661" target="_blank">fdo#72661</a> - FORMATTING: Wrap text activates hyphenation by default<br><br>
+	    		</div>
 	    	</div>
 	    	<div class="img_outer">
 	    		<img src="img/libreoffice.png" alt="img" width="622" height="209" />
@@ -785,8 +790,88 @@
 	    		<h2>Daily Good</h2>
 	    		<p>Android Application Development</p>
 	    		<div class="link"><a href="https://play.google.com/store/apps/details?id=com.desai.Daily_Good" target="_blank">Go to project</a></div>
-	    		<div class="client">Java, Android</div>
-	    		<div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non magna eu leo placerat accumsan. Maecenas cursus augue id tincidunt sagittis. Duis mattis massa sit amet ipsum laoreet, et elementum felis vulputate. Nam convallis nibh elit, ac consequat diam faucibus a.</div>
+	    		<div class="client">Java (Android)</div>
+	    		<div class="description">The main tasks I had worked on are creating code between the front-end part and back-end server such as HTTP request, JSON parsing, and so on. Initially, the HTTP-related code looked confusing and complicated in Java, so I simplified both HTTP and JSON parsing as much as possible so that my teammates were able to communicate with the back-end server easier by simply calling the functions I created. I made our entire code simpler, more understandable, and easier to read.<br><br>
+	    		Here are some code snippets:
+	    		<div class="highlight"><pre><code class="java"><span class="kd">public</span> <span class="nf">FeelGood</span><span class="o">(</span><span class="n">JSONObject</span> <span class="n">responseJSON</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">JSONException</span> <span class="o">{</span>
+
+	<span class="c1">// for all requests</span>
+	<span class="k">this</span><span class="o">.</span><span class="na">success</span> <span class="o">=</span> <span class="n">responseJSON</span><span class="o">.</span><span class="na">getBoolean</span><span class="o">(</span><span class="s">&quot;success&quot;</span><span class="o">);</span>
+	<span class="k">if</span> <span class="o">(!</span><span class="k">this</span><span class="o">.</span><span class="na">success</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">errorMsg</span> <span class="o">=</span> <span class="n">responseJSON</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;error&quot;</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="c1">// request for creating user or retrieving user</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">responseJSON</span><span class="o">.</span><span class="na">has</span><span class="o">(</span><span class="s">&quot;user&quot;</span><span class="o">))</span> <span class="o">{</span>
+		<span class="n">JSONObject</span> <span class="n">userJSON</span> <span class="o">=</span> <span class="n">responseJSON</span><span class="o">.</span><span class="na">getJSONObject</span><span class="o">(</span><span class="s">&quot;user&quot;</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">__v</span> <span class="o">=</span> <span class="n">userJSON</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">&quot;__v&quot;</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">username</span> <span class="o">=</span> <span class="n">userJSON</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;username&quot;</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">hash</span> <span class="o">=</span> <span class="n">userJSON</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;hash&quot;</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">email</span> <span class="o">=</span> <span class="n">userJSON</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;email&quot;</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">_id</span> <span class="o">=</span> <span class="n">userJSON</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;_id&quot;</span><span class="o">);</span>
+
+		<span class="k">this</span><span class="o">.</span><span class="na">dailyGoods</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">FeelGood</span><span class="o">.</span><span class="na">DailyGood</span><span class="o">&gt;();</span>
+		<span class="n">JSONArray</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">userJSON</span><span class="o">.</span><span class="na">getJSONArray</span><span class="o">(</span><span class="s">&quot;dailygoods&quot;</span><span class="o">);</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">dailyGoods</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">DailyGood</span><span class="o">(</span><span class="n">arr</span><span class="o">.</span><span class="na">getJSONObject</span><span class="o">(</span><span class="n">i</span><span class="o">)));</span>
+		<span class="o">}</span>
+
+	<span class="o">}</span>
+
+	<span class="c1">// request for creating daily good</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">responseJSON</span><span class="o">.</span><span class="na">has</span><span class="o">(</span><span class="s">&quot;dailygood&quot;</span><span class="o">))</span> <span class="o">{</span>
+		<span class="n">JSONObject</span> <span class="n">dailygoodJSON</span> <span class="o">=</span> <span class="n">responseJSON</span><span class="o">.</span><span class="na">getJSONObject</span><span class="o">(</span><span class="s">&quot;dailygood&quot;</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">dailyGoods</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">FeelGood</span><span class="o">.</span><span class="na">DailyGood</span><span class="o">&gt;();</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">dailyGoods</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">DailyGood</span><span class="o">(</span><span class="n">dailygoodJSON</span><span class="o">));</span>
+	<span class="o">}</span>
+
+	<span class="c1">// request for retrieving all daily goods</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">responseJSON</span><span class="o">.</span><span class="na">has</span><span class="o">(</span><span class="s">&quot;dailygoods&quot;</span><span class="o">))</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">dailyGoods</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">FeelGood</span><span class="o">.</span><span class="na">DailyGood</span><span class="o">&gt;();</span>
+		<span class="n">JSONArray</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">responseJSON</span><span class="o">.</span><span class="na">getJSONArray</span><span class="o">(</span><span class="s">&quot;dailygoods&quot;</span><span class="o">);</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">dailyGoods</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">DailyGood</span><span class="o">(</span><span class="n">arr</span><span class="o">.</span><span class="na">getJSONObject</span><span class="o">(</span><span class="n">i</span><span class="o">)));</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>	    		
+</code></pre></div>
+				<div class="highlight"><pre><code class="java"><span class="kd">public</span> <span class="kd">static</span> <span class="n">FeelGood</span> <span class="nf">createUser</span><span class="o">(</span><span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="n">String</span> <span class="n">password</span><span class="o">,</span> <span class="n">String</span> <span class="n">email</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">JSONException</span> <span class="o">{</span>
+	<span class="c1">// String response</span>
+	<span class="n">String</span> <span class="n">responseBody</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="n">JSONObject</span> <span class="n">responseJSON</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+	<span class="c1">// Create a new HttpClient and Post Header</span>
+	<span class="n">HttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultHttpClient</span><span class="o">();</span>
+	<span class="n">HttpPost</span> <span class="n">httppost</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HttpPost</span><span class="o">(</span><span class="n">CREATE_USER_URL</span><span class="o">);</span>
+
+	<span class="k">try</span> <span class="o">{</span>
+		<span class="c1">// Add your data</span>
+		<span class="n">List</span><span class="o">&lt;</span><span class="n">NameValuePair</span><span class="o">&gt;</span> <span class="n">nameValuePairs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">NameValuePair</span><span class="o">&gt;(</span><span class="mi">3</span><span class="o">);</span>
+		<span class="n">nameValuePairs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">BasicNameValuePair</span><span class="o">(</span><span class="s">&quot;username&quot;</span><span class="o">,</span> <span class="n">username</span><span class="o">));</span>
+		<span class="n">nameValuePairs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">BasicNameValuePair</span><span class="o">(</span><span class="s">&quot;hash&quot;</span><span class="o">,</span> <span class="n">password</span><span class="o">));</span>
+		<span class="n">nameValuePairs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">BasicNameValuePair</span><span class="o">(</span><span class="s">&quot;email&quot;</span><span class="o">,</span> <span class="n">email</span><span class="o">));</span>
+		<span class="n">httppost</span><span class="o">.</span><span class="na">setEntity</span><span class="o">(</span><span class="k">new</span> <span class="n">UrlEncodedFormEntity</span><span class="o">(</span><span class="n">nameValuePairs</span><span class="o">));</span>
+
+		<span class="c1">// Execute HTTP Post Request</span>
+		<span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">http</span><span class="o">.</span><span class="na">HttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">httpclient</span>
+				<span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">httppost</span><span class="o">);</span>
+		<span class="n">HttpEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getEntity</span><span class="o">();</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">entity</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">responseBody</span> <span class="o">=</span> <span class="n">EntityUtils</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">entity</span><span class="o">);</span>
+			<span class="n">responseJSON</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONObject</span><span class="o">(</span><span class="n">responseBody</span><span class="o">);</span>
+		<span class="o">}</span>
+
+	<span class="o">}</span> 
+	<span class="k">catch</span> <span class="o">(</span><span class="n">ClientProtocolException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span> 
+	<span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span> 
+	<span class="k">catch</span> <span class="o">(</span><span class="n">JSONException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span>
+	
+	<span class="k">return</span> <span class="k">new</span> <span class="nf">FeelGood</span><span class="o">(</span><span class="n">responseJSON</span><span class="o">);</span>
+<span class="o">}</span>				
+</code></pre></div>
+				<br>
+	    		</div>
 	    	</div>
 	    	<div class="img_outer">
 	    		<img src="img/Daily-Goodness.jpg" alt="img" width="622" height="209" />
@@ -801,36 +886,88 @@
 	    		<h2>LoL Web Application</h2>
 	    		<p>Web Development</p>
 	    		<div class="link"><a href="http://pentakill.web.engr.illinois.edu/" target="_blank">Go to project</a></div>
-	    		<div class="client">HTML, CSS, JavaScript</div>
-	    		<div class="description">The application provides information about champions, items, runes, and abilities from a famous PC game, “League of Legends” aka. LoL. More importantly, it provides an interface where users can try out their particular settings or builds on a champion.<br>
-	    		
-	    		<div class="highlight"><pre><code class="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Factorial</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>	<span class="o">{</span>
-	   	 
-		 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Enter a number between 1 and 20 inclusive.&quot;</span><span class="o">);</span>
-		 
-		 <span class="kt">long</span> <span class="n">max</span> <span class="o">=</span> <span class="n">TextIO</span><span class="o">.</span><span class="na">getlnInt</span><span class="o">();</span>
-		 <span class="kt">long</span> <span class="n">a</span> <span class="o">=</span> <span class="n">max</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-		 		 		 
-		 <span class="k">while</span><span class="o">(</span><span class="n">max</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">max</span> <span class="o">&gt;=</span> <span class="mi">21</span><span class="o">)</span>
-		 <span class="o">{</span>	  
-		 	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Enter a number between 1 and 20 inclusive.&quot;</span><span class="o">);</span>
-		    <span class="n">max</span> <span class="o">=</span> <span class="n">TextIO</span><span class="o">.</span><span class="na">getlnInt</span><span class="o">();</span>  
-		    <span class="n">a</span> <span class="o">=</span> <span class="n">max</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-		 <span class="o">}</span>
-		 
-		 <span class="kt">long</span> <span class="n">input</span> <span class="o">=</span> <span class="n">max</span><span class="o">;</span>
-		 <span class="k">while</span> <span class="o">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> 
-		 <span class="o">{</span>
-		    <span class="n">max</span> <span class="o">=</span> <span class="n">max</span> <span class="o">*</span> <span class="n">a</span><span class="o">;</span>
-		    <span class="n">a</span> <span class="o">--;</span>
-		 <span class="o">}</span>
-		 
-		 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">input</span> <span class="o">+</span> <span class="s">&quot;! = &quot;</span> <span class="o">+</span> <span class="n">max</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>				
+	    		<div class="client">HTML, CSS, JavaScript, PHP, MySQL</div>
+	    		<div class="description">The application provides information about champions, items, runes, and abilities from a famous PC game, “League of Legends” aka. LoL. More importantly, it provides an interface where users can try out their particular settings or builds on a champion.<br><br>
+	    		Here are some code snippets:
+	    		<div class="highlight"><pre><code class="js"><span class="cm">/* Users can search champions by name dynamically without reloading webpage */</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#text1&#39;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;input propertychange&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#text1&quot;</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">();</span> 
+	<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div.inner a.champion_icon&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;img&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">).</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">){</span>
+			<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+		<span class="p">}</span>
+	<span class="p">});</span>
+<span class="p">});</span>
+
+<span class="cm">/* Users can search items by name dynamically without reloading webpage */</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#text2&#39;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;input propertychange&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#text2&quot;</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">();</span> 
+	<span class="kd">var</span> <span class="nx">choice</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;input[name=radio]:checked&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;tbody tr&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">choice</span> <span class="o">==</span> <span class="s2">&quot;name&quot;</span><span class="p">){</span>
+			<span class="k">if</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;:nth-child(2)&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">){</span>
+				<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+		<span class="k">else</span><span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;:nth-child(3)&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">){</span>
+				<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">});</span>
+<span class="p">});</span>				
 </code></pre></div>
-				[Syntax highlighting](http://en.wikipedia.org/wiki/Syntax_highlighting)
+
+				<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span> 
+
+<span class="cm">/* Parses and prints free champion rotation information from other fan website */</span>
+
+<span class="k">include_once</span><span class="p">(</span><span class="s1">&#39;simple_html_dom.php&#39;</span><span class="p">);</span>
+<span class="k">require</span> <span class="s1">&#39;connect.php&#39;</span><span class="p">;</span>
+
+<span class="nv">$html</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">simple_html_dom</span><span class="p">();</span>
+<span class="nv">$html</span><span class="o">-&gt;</span><span class="na">load_file</span><span class="p">(</span><span class="s1">&#39;http://leagueoflegends.wikia.com/wiki/Free_champion_rotation&#39;</span><span class="p">);</span>
+
+<span class="nv">$rotation</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;ol[class=free_champion_rotation] li&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$spaces</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&amp;#32;&quot;</span><span class="p">);</span>
+    <span class="nv">$champion</span> <span class="o">=</span> <span class="nx">trim</span><span class="p">(</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">plaintext</span><span class="p">);</span>
+    <span class="nv">$champion</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="nv">$spaces</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nv">$champion</span><span class="p">);</span>
+    <span class="nb">array_push</span><span class="p">(</span><span class="nv">$rotation</span><span class="p">,</span> <span class="nv">$champion</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">print_free_rotation</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$rotation</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;ul class=&#39;alt&#39;&gt;&quot;</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$rotation</span> <span class="k">as</span> <span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;&lt;li&gt;&quot;</span> <span class="o">.</span> <span class="nv">$i</span> <span class="o">.</span> <span class="s2">&quot;&lt;/li&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;/ul&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">print_this_week</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$html</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;div[id=rotationweek]&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">plaintext</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">print_rotation_slide</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$rotation</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;ul class=&#39;slideshow&#39; width=&#39;600&#39; height=&#39;350&#39;&gt;&quot;</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$rotation</span> <span class="k">as</span> <span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$src</span> <span class="o">=</span> <span class="s2">&quot;./img/skins/&quot;</span> <span class="o">.</span> <span class="nv">$i</span> <span class="o">.</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">&quot;&lt;li&gt;&lt;img src=&#39;</span><span class="si">$src</span><span class="s2">&#39; width=&#39;600&#39; height=&#39;350&#39;/&gt;&lt;/li&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">echo</span> <span class="s2">&quot;&lt;/ul&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x">				</span>
+</code></pre></div>
+				<br>
 	    		</div>
 	    		<div class="social">
 	    			<a href="http://www.youtube.com/watch?v=2HJtk7h2xuk\\" target="_blank" class="youtube"><i class="icon-youtube"></i></a>
