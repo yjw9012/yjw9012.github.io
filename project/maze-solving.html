@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html style="background: url(../img/black-background-wood.jpg) center 0 no-repeat; background-size: cover; background-attachment: fixed;">
+<head>
+    
+    <title>Maze Solving</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/animate.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"/>
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600|Oswald:300,400' rel='stylesheet' type='text/css'>
+
+</head>
+<body class="red_color">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+		<!-- Main Content -->
+		<div id="content">
+			<div id="home_page">
+				
+				<h1 class="page_title color_title"><span>Maze Solving</span></h1>
+				<div class="highlight"><pre><code class="java"><span class="cm">/**</span>
+<span class="cm"> * Implements A* algorithm</span>
+<span class="cm"> * @param heuristic heuristic function the user chose to use </span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">aStarAlgorithm</span><span class="o">(</span><span class="kt">int</span> <span class="n">heuristic</span><span class="o">)</span> <span class="o">{</span>		
+	<span class="n">PriorityQueue</span><span class="o">&lt;</span><span class="n">AstarSquare</span><span class="o">&gt;</span> <span class="n">openList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;</span><span class="n">AstarSquare</span><span class="o">&gt;();</span>		
+	<span class="n">Hashtable</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">AstarSquare</span><span class="o">&gt;</span> <span class="n">closedList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Hashtable</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">AstarSquare</span><span class="o">&gt;();</span>
+	<span class="n">calculateEstimatedCost</span><span class="o">(</span><span class="n">heuristic</span><span class="o">);</span>
+	<span class="n">generateAdjencentSquares</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+	<span class="o">((</span><span class="n">AstarSquare</span><span class="o">)</span><span class="n">start</span><span class="o">).</span><span class="na">setAccumulatedCost</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+	<span class="n">openList</span><span class="o">.</span><span class="na">add</span><span class="o">((</span><span class="n">AstarSquare</span><span class="o">)</span><span class="n">start</span><span class="o">);</span>
+
+	<span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+	
+	<span class="k">while</span><span class="o">(</span><span class="n">openList</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">){</span>
+		<span class="n">AstarSquare</span> <span class="n">bestSquare</span> <span class="o">=</span> <span class="n">openList</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+		<span class="n">key</span><span class="o">++;</span>
+		<span class="n">closedList</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">bestSquare</span><span class="o">);</span>	<span class="c1">// switch it to closed list</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">bestSquare</span><span class="o">.</span><span class="na">getStatus</span><span class="o">()</span> <span class="o">==</span> <span class="sc">&#39;e&#39;</span><span class="o">){</span>	<span class="c1">// when the target point is added to closed lost, the algorithm is finished</span>
+			<span class="n">copyGrid</span><span class="o">();</span>
+			<span class="n">traceBack</span><span class="o">(</span><span class="n">bestSquare</span><span class="o">);</span>	<span class="c1">// traces back from target point to start point</span>
+			<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+		<span class="o">}</span>			
+		<span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">AstarSquare</span><span class="o">&gt;</span> <span class="n">curAdjacentSquares</span> <span class="o">=</span> <span class="n">bestSquare</span><span class="o">.</span><span class="na">getAdjacentSquares</span><span class="o">();</span>
+		<span class="k">for</span><span class="o">(</span><span class="n">AstarSquare</span> <span class="n">adj</span> <span class="o">:</span> <span class="n">curAdjacentSquares</span><span class="o">){</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">adj</span><span class="o">.</span><span class="na">getStatus</span><span class="o">()</span> <span class="o">==</span> <span class="sc">&#39;X&#39;</span> <span class="o">||</span> <span class="n">closedList</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">adj</span><span class="o">))</span>
+				<span class="k">continue</span><span class="o">;</span>
+			<span class="k">if</span><span class="o">(!</span><span class="n">openList</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">adj</span><span class="o">)){</span>
+				<span class="n">adjacentSquareUpdate</span><span class="o">(</span><span class="n">openList</span><span class="o">,</span> <span class="n">adj</span><span class="o">,</span> <span class="n">bestSquare</span><span class="o">);</span>					
+				<span class="k">continue</span><span class="o">;</span>
+			<span class="o">}</span>				
+			<span class="kt">int</span> <span class="n">newPath</span><span class="o">;</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">diagonal</span><span class="o">(</span><span class="n">bestSquare</span><span class="o">,</span> <span class="n">adj</span><span class="o">))</span>
+				<span class="n">newPath</span> <span class="o">=</span> <span class="n">bestSquare</span><span class="o">.</span><span class="na">getAccumulatedCost</span><span class="o">()</span> <span class="o">+</span> <span class="mi">141</span><span class="o">;</span>
+			<span class="k">else</span> <span class="n">newPath</span> <span class="o">=</span> <span class="n">bestSquare</span><span class="o">.</span><span class="na">getAccumulatedCost</span><span class="o">()</span> <span class="o">+</span> <span class="mi">100</span><span class="o">;</span>				
+			<span class="k">if</span><span class="o">(</span><span class="n">newPath</span> <span class="o">&lt;</span> <span class="n">adj</span><span class="o">.</span><span class="na">getAccumulatedCost</span><span class="o">())</span>
+				<span class="n">updateOpenList</span><span class="o">(</span><span class="n">openList</span><span class="o">,</span> <span class="n">newPath</span><span class="o">,</span> <span class="n">adj</span><span class="o">,</span> <span class="n">bestSquare</span><span class="o">);</span>					
+		<span class="o">}</span>
+	<span class="o">}</span>
+	
+	<span class="c1">// when no path is found</span>
+	<span class="n">copyGrid</span><span class="o">();</span>
+	<span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>	    		
+</code></pre></div>
+				<div class="highlight"><pre><code class="java"><span class="cm">/**</span>
+<span class="cm"> * Implements Dijkstra&#39;s Path finding algorithm</span>
+<span class="cm"> * @param heuristic heuristic function the user chose to use</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">DijkstrasPathfinding</span><span class="o">(</span><span class="kt">int</span> <span class="n">heuristic</span><span class="o">)</span> <span class="o">{</span>
+	<span class="n">generateAdjencentSquares</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>		
+	<span class="kt">int</span> <span class="n">numSquares</span> <span class="o">=</span> <span class="n">rows</span> <span class="o">*</span> <span class="n">columns</span><span class="o">;</span>
+	<span class="kt">int</span><span class="o">[]</span> <span class="n">dist</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">numSquares</span><span class="o">];</span>
+	<span class="n">DijkstrasSquare</span><span class="o">[]</span> <span class="n">previous</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DijkstrasSquare</span><span class="o">[</span><span class="n">numSquares</span><span class="o">];</span>
+	
+	<span class="kt">int</span> <span class="n">inf</span> <span class="o">=</span> <span class="mi">100000000</span><span class="o">;</span>
+	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numSquares</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+		<span class="n">dist</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">inf</span><span class="o">;</span>
+		<span class="n">previous</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="n">dist</span><span class="o">[((</span><span class="n">DijkstrasSquare</span><span class="o">)</span><span class="n">start</span><span class="o">).</span><span class="na">getUniqueID</span><span class="o">()]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+	<span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">DijkstrasSquare</span><span class="o">&gt;</span> <span class="n">setOfNodes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">DijkstrasSquare</span><span class="o">&gt;();</span>
+	<span class="n">addSquaresToLL</span><span class="o">(</span><span class="n">setOfNodes</span><span class="o">);</span>
+	
+	<span class="k">while</span><span class="o">(</span><span class="n">setOfNodes</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">){</span>
+		<span class="n">DijkstrasSquare</span> <span class="n">next</span> <span class="o">=</span> <span class="n">findBestVertex</span><span class="o">(</span><span class="n">setOfNodes</span><span class="o">,</span> <span class="n">dist</span><span class="o">);</span>
+		<span class="n">setOfNodes</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+		
+		<span class="k">if</span><span class="o">(</span><span class="n">dist</span><span class="o">[</span><span class="n">next</span><span class="o">.</span><span class="na">getUniqueID</span><span class="o">()]</span> <span class="o">==</span> <span class="n">inf</span><span class="o">)</span>
+			<span class="k">break</span><span class="o">;</span>
+		
+		<span class="k">if</span><span class="o">(</span><span class="n">next</span><span class="o">.</span><span class="na">getStatus</span><span class="o">()</span> <span class="o">==</span> <span class="sc">&#39;e&#39;</span><span class="o">){</span>	
+			<span class="n">copyGrid</span><span class="o">();</span>
+			<span class="n">checkPrevious</span><span class="o">(</span><span class="n">next</span><span class="o">.</span><span class="na">getUniqueID</span><span class="o">(),</span> <span class="n">previous</span><span class="o">);</span>		
+			<span class="k">return</span><span class="o">;</span>
+		<span class="o">}</span>		
+		
+		<span class="k">for</span><span class="o">(</span><span class="n">DijkstrasSquare</span> <span class="n">adj</span> <span class="o">:</span> <span class="n">next</span><span class="o">.</span><span class="na">getAdjacentSquares</span><span class="o">()){</span>
+			<span class="kt">int</span> <span class="n">alt</span> <span class="o">=</span> <span class="n">dist</span><span class="o">[</span><span class="n">next</span><span class="o">.</span><span class="na">getUniqueID</span><span class="o">()];</span>
+			<span class="n">alt</span> <span class="o">+=</span> <span class="n">calculateDist</span><span class="o">(</span><span class="n">heuristic</span><span class="o">,</span> <span class="n">next</span><span class="o">,</span> <span class="n">adj</span><span class="o">);</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">alt</span> <span class="o">&lt;</span>  <span class="n">dist</span><span class="o">[</span><span class="n">adj</span><span class="o">.</span><span class="na">getUniqueID</span><span class="o">()]){</span>
+				<span class="n">dist</span><span class="o">[</span><span class="n">adj</span><span class="o">.</span><span class="na">getUniqueID</span><span class="o">()]</span> <span class="o">=</span> <span class="n">alt</span><span class="o">;</span>
+				<span class="n">previous</span><span class="o">[</span><span class="n">adj</span><span class="o">.</span><span class="na">getUniqueID</span><span class="o">()]</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	<span class="n">copyGrid</span><span class="o">();</span>
+<span class="o">}</span>				
+</code></pre></div>
+
+			<br><br>
+			</div>
+			<!-- /Home page -->
+		</div>
+		<!-- /Main Content -->
+
+	</div>
+	<!-- /Wrapper -->
+	
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/sequence.js"></script>
+    <script type="text/javascript" src="../js/mixitup.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <script type="text/javascript" src="../js/scripts.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</body>
+</html>

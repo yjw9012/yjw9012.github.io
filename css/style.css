@@ -593,9 +593,10 @@ hr.fancy-line:after {
 }
 
 .menu ul{
-	width: 595px;
+	/* width: 595px; */
 	display: inline-block;
-	margin-left: 19%;
+	/* margin-left: 19%; */
+	margin-left: 24%;
 	float: left;
 	font-size: 15px;
 	padding: 18px;
@@ -603,7 +604,8 @@ hr.fancy-line:after {
 }
 
 .menu.menu_width_page ul{
-	margin-left: 3%;
+	/* margin-left: 3%; */
+	margin-left: 5%;
 }
 
 .menu ul li{
@@ -6498,3 +6500,9 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 	}
 
 }
+
+/*
+===============================================
+			Jiwoong Youn
+===============================================
+*/

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html style="background: url(../img/black-background-wood.jpg) center 0 no-repeat; background-size: cover; background-attachment: fixed;">
+<head>
+    
+    <title>LoL Web Application</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/animate.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"/>
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600|Oswald:300,400' rel='stylesheet' type='text/css'>
+
+</head>
+<body class="red_color">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+		<!-- Main Content -->
+		<div id="content">
+			<div id="home_page">
+				
+				<h1 class="page_title color_title"><span>LoL Web Application</span></h1>
+					    		<div class="highlight"><pre><code class="js"><span class="cm">/* Users can search champions by name dynamically without reloading webpage */</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#text1&#39;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;input propertychange&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#text1&quot;</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">();</span> 
+	<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div.inner a.champion_icon&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;img&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">).</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">){</span>
+			<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+		<span class="p">}</span>
+	<span class="p">});</span>
+<span class="p">});</span>
+
+<span class="cm">/* Users can search items by name dynamically without reloading webpage */</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#text2&#39;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;input propertychange&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#text2&quot;</span><span class="p">).</span><span class="nx">val</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">();</span> 
+	<span class="kd">var</span> <span class="nx">choice</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;input[name=radio]:checked&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;tbody tr&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">choice</span> <span class="o">==</span> <span class="s2">&quot;name&quot;</span><span class="p">){</span>
+			<span class="k">if</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;:nth-child(2)&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">){</span>
+				<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+		<span class="k">else</span><span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;:nth-child(3)&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">){</span>
+				<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">});</span>
+<span class="p">});</span>				
+</code></pre></div>
+
+				<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span> 
+
+<span class="cm">/* Parses and prints free champion rotation information from other fan website */</span>
+
+<span class="k">include_once</span><span class="p">(</span><span class="s1">&#39;simple_html_dom.php&#39;</span><span class="p">);</span>
+<span class="k">require</span> <span class="s1">&#39;connect.php&#39;</span><span class="p">;</span>
+
+<span class="nv">$html</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">simple_html_dom</span><span class="p">();</span>
+<span class="nv">$html</span><span class="o">-&gt;</span><span class="na">load_file</span><span class="p">(</span><span class="s1">&#39;http://leagueoflegends.wikia.com/wiki/Free_champion_rotation&#39;</span><span class="p">);</span>
+
+<span class="nv">$rotation</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;ol[class=free_champion_rotation] li&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$spaces</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&amp;#32;&quot;</span><span class="p">);</span>
+    <span class="nv">$champion</span> <span class="o">=</span> <span class="nx">trim</span><span class="p">(</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">plaintext</span><span class="p">);</span>
+    <span class="nv">$champion</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="nv">$spaces</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nv">$champion</span><span class="p">);</span>
+    <span class="nb">array_push</span><span class="p">(</span><span class="nv">$rotation</span><span class="p">,</span> <span class="nv">$champion</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">print_free_rotation</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$rotation</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;ul class=&#39;alt&#39;&gt;&quot;</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$rotation</span> <span class="k">as</span> <span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;&lt;li&gt;&quot;</span> <span class="o">.</span> <span class="nv">$i</span> <span class="o">.</span> <span class="s2">&quot;&lt;/li&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;/ul&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">print_this_week</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$html</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$html</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;div[id=rotationweek]&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">plaintext</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">print_rotation_slide</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$rotation</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;ul class=&#39;slideshow&#39; width=&#39;600&#39; height=&#39;350&#39;&gt;&quot;</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$rotation</span> <span class="k">as</span> <span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$src</span> <span class="o">=</span> <span class="s2">&quot;./img/skins/&quot;</span> <span class="o">.</span> <span class="nv">$i</span> <span class="o">.</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">&quot;&lt;li&gt;&lt;img src=&#39;</span><span class="si">$src</span><span class="s2">&#39; width=&#39;600&#39; height=&#39;350&#39;/&gt;&lt;/li&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">echo</span> <span class="s2">&quot;&lt;/ul&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x">				</span>
+</code></pre></div>
+
+			<br><br>
+			</div>
+			<!-- /Home page -->
+		</div>
+		<!-- /Main Content -->
+
+	</div>
+	<!-- /Wrapper -->
+	
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/sequence.js"></script>
+    <script type="text/javascript" src="../js/mixitup.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <script type="text/javascript" src="../js/scripts.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html style="background: url(../img/black-background-wood.jpg) center 0 no-repeat; background-size: cover; background-attachment: fixed;">
+<head>
+    
+    <title>My, oh, my, oh, malloc!</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/animate.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"/>
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600|Oswald:300,400' rel='stylesheet' type='text/css'>
+
+</head>
+<body class="red_color">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+		<!-- Main Content -->
+		<div id="content">
+			<div id="home_page">
+				
+				<h1 class="page_title color_title"><span>My, oh, my, oh, malloc!</span></h1>
+					    		<div class="highlight"><pre><code class="c"><span class="kt">void</span> <span class="o">*</span><span class="nf">malloc</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">size</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">heading</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">meta</span> <span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="n">sbrk</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span> <span class="o">+</span> <span class="n">size</span><span class="p">);</span>
+		<span class="n">ptr</span> <span class="o">-&gt;</span> <span class="n">size_block</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+		<span class="n">ptr</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+		<span class="k">return</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">meta</span><span class="p">);</span>
+	<span class="p">}</span>		
+		
+	<span class="c1">// if there is a free list		</span>
+	<span class="n">meta</span> <span class="o">*</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">heading</span><span class="p">;</span>
+	<span class="n">meta</span> <span class="o">*</span> <span class="n">prev</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+	<span class="k">while</span><span class="p">(</span><span class="n">cur</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="c1">// if found</span>
+		<span class="k">if</span><span class="p">((</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">size_block</span> <span class="o">&gt;=</span> <span class="n">size</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">size</span><span class="o">*</span><span class="mf">1.5</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">size_block</span><span class="p">))</span>
+			<span class="k">break</span><span class="p">;</span>			
+		<span class="n">prev</span> <span class="o">=</span> <span class="n">cur</span><span class="p">;</span>	
+		<span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="k">if</span><span class="p">(</span><span class="n">cur</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+	<span class="p">{</span>
+	    <span class="k">if</span><span class="p">(</span><span class="n">heading</span> <span class="o">==</span> <span class="n">cur</span><span class="p">)</span>
+	    <span class="p">{</span>
+	        <span class="n">heading</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">-&gt;</span> <span class="n">next</span><span class="p">;</span>
+	        <span class="n">cur</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+	        <span class="k">return</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">cur</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">meta</span><span class="p">);</span>
+	    <span class="p">}</span>
+	    <span class="n">prev</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">-&gt;</span> <span class="n">next</span><span class="p">;</span>
+	    <span class="n">cur</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+	    <span class="k">return</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">cur</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">meta</span><span class="p">);</span>
+	<span class="p">}</span>
+	
+	<span class="c1">// if there is no appropriate meta in the list</span>
+	<span class="n">meta</span> <span class="o">*</span> <span class="n">ptr2</span> <span class="o">=</span> <span class="n">sbrk</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span> <span class="o">+</span> <span class="n">size</span><span class="p">);</span>
+	<span class="n">ptr2</span> <span class="o">-&gt;</span> <span class="n">size_block</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+	<span class="n">ptr2</span> <span class="o">-&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="k">return</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">ptr2</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">meta</span><span class="p">);</span>	
+<span class="p">}</span>				
+
+<span class="kt">void</span> <span class="nf">free</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="cm">/*</span>
+<span class="cm">	 * According to the C standard:</span>
+<span class="cm">	 * If a null pointer is passed as argument, no action occurs.</span>
+<span class="cm">	 */</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">ptr</span><span class="p">)</span>
+		<span class="k">return</span><span class="p">;</span>
+	
+	<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">heading</span><span class="p">)</span>		<span class="c1">// if the list is empty</span>
+	<span class="p">{</span>
+		<span class="n">heading</span> <span class="o">=</span> <span class="p">(</span><span class="n">meta</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">meta</span><span class="p">);</span>
+		<span class="k">return</span><span class="p">;</span>
+	<span class="p">}</span>
+
+    <span class="kt">void</span> <span class="o">*</span> <span class="n">curr</span> <span class="o">=</span> <span class="n">ptr</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">meta</span><span class="p">);</span>
+    <span class="n">meta</span> <span class="o">*</span> <span class="n">curr_meta</span> <span class="o">=</span> <span class="p">(</span><span class="n">meta</span><span class="o">*</span><span class="p">)</span> <span class="n">curr</span><span class="p">;</span>
+    <span class="n">curr_meta</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">heading</span><span class="p">;</span>
+    <span class="n">heading</span> <span class="o">=</span> <span class="n">curr_meta</span><span class="p">;</span>
+<span class="p">}</span>				
+</code></pre></div>
+
+			<br><br>
+			</div>
+			<!-- /Home page -->
+		</div>
+		<!-- /Main Content -->
+
+	</div>
+	<!-- /Wrapper -->
+	
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/sequence.js"></script>
+    <script type="text/javascript" src="../js/mixitup.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <script type="text/javascript" src="../js/scripts.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</body>
+</html>

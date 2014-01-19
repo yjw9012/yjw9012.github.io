@@ -533,7 +533,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type: 'POST',
-			url: 'ajax/ajax.php',
+			url: '../ajax/ajax.php',
 			data: {
 				'name' : name.val(),
 				'email' : email.val(),
