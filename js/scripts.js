@@ -533,7 +533,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type: 'POST',
-			url: '../ajax/ajax.php',
+			url: 'https://github.com/yjw9012/yjw9012.github.io/blob/master/ajax/ajax.php',
 			data: {
 				'name' : name.val(),
 				'email' : email.val(),
