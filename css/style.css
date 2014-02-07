@@ -1687,7 +1687,8 @@ hr.fancy-line:after {
 
 #content > div#portfolio_page .portfolio_filter{
 	display: block;
-	width: 45%;
+	/* width: 45%; */
+	width: 30%;
 	padding: 10px;
 	margin: 35px auto;
 	margin-bottom: 5px;
@@ -2892,7 +2893,7 @@ hr.fancy-line:after {
 	display: block;
 	height: 300px;
 	/* width: 100%; */
-	width: 55%;
+	width: 60%;
 	margin-left: 2.5%;
 	float: left;
 }
@@ -2903,9 +2904,9 @@ hr.fancy-line:after {
 	/* padding: 10px; */
 	border-radius: 10px;
 	margin-bottom: 20px;
-	margin-left: 2.5%;
+	margin-left: 5%;
 	float: left;
-	width: 40%;
+	width: 32.5%;
 }
 
 #content > div#contact_page .contact_info > hr{
@@ -6503,9 +6504,3 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 	}
 
 }
-
-/*
-===============================================
-			Jiwoong Youn
-===============================================
-*/
