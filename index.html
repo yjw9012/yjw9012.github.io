@@ -1,8 +1,11 @@
+---
+---
+
 <!DOCTYPE html>
 <html style="background: url(img/black-background-wood.jpg) center 0 no-repeat; background-size: cover; background-attachment: fixed;">
 <head>
     
-    <title>Jiwoong Youn's Website</title>
+    <title>{{ site.name }}'s Website</title>
     
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -19,90 +22,8 @@
 	<!-- Wrapper -->
 	<div id="wrapper">
 
-		<!-- Header -->
-<div id="header">
-
-	<!-- Left side -->
-	<div class="left">
-		<img src="img/profile_picture.jpg" alt="photo" />
-	</div>
-	<!-- /Left side -->
-
-	<!-- Center -->
-	<div class="middle">
-		<div class="name">
-			Jiwoong Youn
-		</div>
-		<div class="description">
-			Majoring in <strong>Computer Science</strong> at <a href="http://illinois.edu/" target="_blank"><strong><font color="black">UIUC</font></strong></a>
-		</div>
-		<div class="download_cv">
-			<a href="resume.pdf" target="_blank"><i class="icon-download"></i><span class="text">View My Resume</span></a>
-		</div>
-		<div class="other">
-			<a href="#portfolio" class="view_portfolio_btn"><i class="icon-folder-close"></i><span class="text">View My Portfolio</span></a>
-		</div>
-	</div>
-	<!-- /Center -->
-
-	<!-- Right side -->
-	<div class="right">
-		<div class="title">Follow Me:</div>
-		<div class="icons">
-			<a href="http://www.linkedin.com/in/yjw9012" target="_blank" class="icon-linkedin-sign-outer top"><i class="icon-linkedin-sign"></i></a>
-			<a href="https://github.com/yjw9012" target="_blank" class="icon-github-outer top"><i class="icon-github"></i></a>
-			<a href="https://www.facebook.com/jiwoong.youn" target="_blank" class="icon-facebook-outer last1 top"><i class="icon-facebook"></i></a>
-			<!--
-			<a href="#" class="icon-google-plus-outer bot"><i class="icon-google-plus"></i></a>
-			<a href="#" class="icon-facebook-outer top"><i class="icon-facebook"></i></a>
-			<a href="#" class="icon-twitter-outer top"><i class="icon-twitter"></i></a>
-			<a href="#" class="icon-linkedin-sign-outer last1 top"><i class="icon-linkedin-sign"></i></a>
-			<a href="#" class="icon-youtube-play-outer bot"><i class="icon-youtube-play"></i></a>
-			<a href="#" class="icon-google-plus-outer bot"><i class="icon-google-plus"></i></a>
-			<a href="#" class="icon-github-outer last2 bot"><i class="icon-github"></i></a>
-			-->
-		</div>
-	</div>
-	<!-- /Right side -->
-
-</div>
-<!-- /Header -->
-		<!-- Menu -->
-<div class="menu">
-	<div class="left">
-		<div class="img"><a href="img/profile_picture.jpg" class="prettyPhoto"><img src="img/profile_picture.jpg" alt="Profile Picture" /></a></div>
-		<span class="name">Jiwoong Youn</span>
-	</div>
-	<div class="menu_inner">
-		<div class="m_menu_toggle"><i class="icon-reorder"></i></div>
-		<ul>
-			<li>
-				<a href="#home" class="active"><i class="menu_icon icon-home active"></i><span class="text">Home</span></a>
-			</li>
-			<li>
-				<a href="#about"><i class="menu_icon icon-user"></i><span class="text">About</span></a>
-			</li>
-			<li>
-				<a href="#resume"><i class="menu_icon icon-file-text"></i><span class="text">Resume</span></a>
-			</li>
-			<li>
-				<a href="#portfolio"><i class="menu_icon icon-picture"></i><span class="text">Portfolio</span></a>
-			</li>
-			<!--
-			<li>
-				<a href="#blog"><i class="menu_icon icon-list-ul"></i><span class="text">Blog</span></a>
-			</li>
-			-->
-			<li>
-				<a href="#contact"><i class="menu_icon icon-envelope"></i><span class="text">Contact</span></a>
-			</li>
-		</ul>
-	</div>
-	<div class="right">
-		<a href="resume.pdf" target="_blank" class="cv"><i class="icon-download"></i><span class="text text1">View My Resume</span><span class="text2">vCard</span></a>
-	</div>
-</div>
-<!-- /Menu -->		
+		{% include header.html %}
+		{% include menu.html %}		
 
 		<!-- Main Content -->
 		<div id="content">
@@ -113,9 +34,9 @@
 				
 				<h1 class="page_title color_title"><span>Welcome To My Website!</span></h1>
 
-				<p class="msg1">My name is <strong>Jiwoong Youn</strong> and I am majoring in <strong>Computer Science</strong> at <strong>University of Illinois at Urbana-Champaign</strong>.</p>
+				<p class="msg1">My name is <strong>{{ site.name }}</strong> and I am majoring in <strong>Computer Science</strong> at <strong>University of Illinois at Urbana-Champaign</strong>.</p>
 
-				<p class="msg2">I am graduating in <strong>May 2014</strong> and looking for a great opportunity as a <strong>software engineer</strong> and/or <strong>software developer</strong>.</p>
+				<p class="msg2">I recently graduated in <strong>May 2014</strong> and looking for a great opportunity as a <strong>software engineer</strong> and/or <strong>software developer</strong>.</p>
 
 				<h1 class="page_title color_title"><span>Some of my work</span></h1>
 				
@@ -174,7 +95,7 @@
 					<div class="right">
 
 						<div class="top_text">
-							Jiwoong Youn
+							{{ site.name }}
 						</div>
 
 						<div class="bot_text">
@@ -198,7 +119,7 @@
 								<i class="icon-user"></i><span>Name</span>
 							</span>
 							<span class="value">
-								Jiwoong Youn
+								{{ site.name }}
 							</span>
 						</div>
 						<div class="item">
@@ -406,496 +327,8 @@
 			</div>
 			<!-- /About Page -->
 
-			<!-- Resume page -->
-<div id="resume_page">
-	<h1 class="page_title color_title">Resume</h1>
-
-	<hr class="hr_line" />
-
-	<!-- Left side -->
-	<div class="left_side">
-
-		<!-- Employment -->
-		<div class="employment left">
-
-			<div class="title color_title">
-				<i class="icon-time"></i>Experience
-			</div>
-
-			<div class="item">
-				<span class="date">Jan 2014</span>
-				<div class="body">
-					<i class="icon-circle color"></i>
-					<span class="type">Software Developer</span>
-					<div class="inner">
-						<span class="subtext color"><a href="http://www.abbott.com/index.htm" target="_blank">Abbott Laboratories</a><span class="location"> &bull; Champaign, Illinois</span></span>
-						<span class="text">Enhanced existing PDRS web application by analyzing functional requirements, preparing an action plan, and identifying areas for modiﬁcation</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-				<span class="date">Dec 2013 - Present</span>
-				<div class="body">
-					<i class="icon-circle color"></i>
-					<span class="type">Open Source Contributor</span>
-					<div class="inner">
-						<span class="subtext color"><a href="https://wiki.documentfoundation.org/Development" target="_blank">LibreOffice</a></span>
-						<span class="text">Handled feature enhancement requests reported in <a href="https://bugs.freedesktop.org/" target="_blank">Bugzilla</a> for more convenient use</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-				<span class="date">Summer 2013</span>
-				<div class="body">
-					<i class="icon-circle color"></i>
-					<span class="type">Intern</span>
-					<div class="inner">
-						<span class="subtext color"><a href="http://www.iti.illinois.edu/" target="_blank">Information Trust Institute</a><span class="location"> &bull; Urbana, Illinois</span></span>
-						<span class="text">
-							Assisted a research team in developing tools for Wikipedia data analysis, a project about hierarchical concept annotation<br>							
-						</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-				<span class="date">Spring 2013</span>
-				<div class="body">
-					<i class="icon-circle color"></i>
-					<span class="type">Researcher</span>
-					<div class="inner">
-						<span class="subtext color"><a href="http://cs.illinois.edu/" target="_blank">Department of Computer Science at University of Illinois at Urbana-Champaign</a><span class="location"> &bull; Urbana-Champaign, Illinois</span></span>
-						<span class="text">
-							Studied two diﬀerent types of annotations which verified the nullness and reference immutability of objects in programs<br>							
-						</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="clear"></div>
-
-		</div>
-		<!-- /Employment -->
-
-		<!-- Education -->
-		<div class="education left">
-
-			<div class="title color_title">
-				<i class="icon-edit"></i>Education
-			</div>
-
-			<div class="item">
-				<span class="date">2010 - present</span>
-				<div class="body">
-					<i class="icon-circle color"></i>
-					<span class="type">Bachelor of Science in Computer Science</span>
-					<div class="inner">
-						<span class="subtext color"><span class="location">University of Illinois at Urbana-Champaign</span></span>
-						<span class="text">GPA: 3.78 / 4.0<br>Expected date of graduation: May 2014</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="clear"></div>
-
-		</div>
-		<!-- /Education -->
-
-		<!-- Projects -->
-		<!--
-		<div class="awards left">
-
-			<div class="title color_title">
-				<i class="icon-code"></i>Projects
-			</div>
-
-			<div class="award">
-				<span class="date">October 2013 - December 2013</span>
-				<div class="body">
-					<i class="icon-circle color"></i>
-					<div class="title">Daily Goodness</div>
-					<div class="inner">
-						<div class="name">University of Illinois at Urbana-Champaign</div>
-						<div class="text">Android Application Development</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		-->
-		<!-- /Projects -->
-
-		<!-- Awards -->
-		<div class="awards left">
-
-			<div class="title color_title">
-				<i class="icon-trophy"></i>Awards
-			</div>
-
-			<div class="award">
-				<span class="date">Fall 2012</span>
-				<div class="body">
-					<i class="icon-circle color"></i>
-					<div class="title">Dean's List</div>
-					<div class="inner">
-						<div class="name">University of Illinois at Urbana-Champaign</div>
-						<div class="text">The top 20% of the College of Engineering</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="award">
-				<span class="date">Fall 2011</span>
-				<div class="body">
-					<i class="icon-circle color"></i>
-					<div class="title">Dean's List</div>
-					<div class="inner">
-						<div class="name">University of Illinois at Urbana-Champaign</div>
-						<div class="text">The top 20% of the College of Engineering</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="award">
-				<span class="date">Spring 2011</span>
-				<div class="body">
-					<i class="icon-circle color"></i>
-					<div class="title">Dean's List</div>
-					<div class="inner">
-						<div class="name">University of Illinois at Urbana-Champaign</div>
-						<div class="text">The top 20% of the College of Engineering</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<!-- /Awards -->
-	
-	</div>
-	<!-- /Left side -->
-
-	<!-- Right side -->
-	<div class="right_side">
-
-		<!-- Skills -->
-		<div class="skills">
-			<h1 class="color_title"><i class="icon-bolt"></i>My Skills</h1>
-
-			<div class="block">
-				<h2><i class="icon-code"></i>Programming</h2>
-				<span class="skill">
-					<span class="color" data-width="90%"><span class="name"><span class="text">Java - </span><strong >90%</strong></span></span>
-				</span>
-				<span class="skill">
-					<span class="color" data-width="80%"><span class="name"><span class="text">C - </span><strong >80%</strong></span></span>
-				</span>
-				<span class="skill">
-					<span class="color" data-width="80%"><span class="name"><span class="text">C++ - </span><strong >80%</strong></span></span>
-				</span>
-				<span class="skill">
-					<span class="color" data-width="50%"><span class="name"><span class="text">Python - </span><strong >50%</strong></span></span>
-				</span>
-				<span class="skill">
-					<span class="color" data-width="50%"><span class="name"><span class="text">LaTeX - </span><strong >50%</strong></span></span>
-				</span>
-				<span class="skill">
-					<span class="color" data-width="50%"><span class="name"><span class="text">Assembly - </span><strong >50%</strong></span></span>
-				</span>
-				<span class="skill">
-					<span class="color" data-width="50%"><span class="name"><span class="text">OCaml - </span><strong >50%</strong></span></span>
-				</span>				
-			</div>
-
-			<div class="block">
-				<h2><i class="icon-pencil"></i>Scripting and Markup</h2>
-				<span class="skill">
-					<span class="color" data-width="60%"><span class="name"><span class="text">HTML - </span><strong >60%</strong></span></span>
-				</span>
-				<span class="skill">
-					<span class="color" data-width="50%"><span class="name"><span class="text">PHP - </span><strong>50%</strong></span></span>
-				</span>
-				<span class="skill">
-					<span class="color" data-width="50%"><span class="name"><span class="text">jQuery - </span><strong>50%</strong></span></span>
-				</span>
-				<span class="skill">
-					<span class="color" data-width="50%"><span class="name"><span class="text">AJAX - </span><strong>50%</strong></span></span>
-				</span>
-				<span class="skill">
-					<span class="color" data-width="50%"><span class="name"><span class="text">CSS - </span><strong>50%</strong></span></span>
-				</span>
-			</div>			
-			
-			<div class="block">
-				<h2><i class="icon-desktop"></i>Databases</h2>
-				<span class="skill">
-					<span class="color" data-width="50%"><span class="name"><span class="text">MySQL - </span><strong >50%</strong></span></span>
-				</span>
-			</div>
-
-		</div>
-		<!-- /Skills -->
-
-		<!-- Tools -->
-		<div class="tools">
-
-			<h1 class="color_title"><i class="icon-wrench"></i>Tools i use</h1>
-
-			<div class="tool">GIT</div>
-			<div class="tool">Subversion</div>
-			<div class="tool">Eclipse</div>
-			<div class="tool">Linux</div>
-			<div class="tool">Ubuntu</div>
-			<div class="tool">Windows</div>
-			<!--
-			<div class="tool">Photoshop</div>
-			<div class="tool">After Effects</div>
-			<div class="tool">jQuery</div>
-			<div class="tool">Wordpress</div>
-			<div class="tool">Joomla</div>
-			<div class="tool">Drupal</div>
-			<div class="tool">Bootstrap</div>
-			-->
-
-		</div>
-		<!-- /Tools -->
-
-		<!-- vCard Download -->
-		<div class="download_vcard">
-			<a href="resume.pdf" target="_blank"><span class="text"><i class="icon-download"></i><span>DOWNLOAD RESUME</span></span></a>
-		</div>
-		<!-- /vCard Download -->
-
-	</div>
-	<!-- /Right side -->
-
-	<!-- Clients -->
-	<!--
-	<div class="clients">
-		<h1 class="color_title"><i class="icon-group"></i>Clients</h1>
-		<i class="resume_slider_left icon-caret-left"></i>
-		<ul class="clients_list">
-			<li class="client" data-client="c1">
-				<img src="img/codecanyon.png" alt="img" />
-			</li>
-			<li class="client" data-client="c2">
-				<img src="img/graphicriver.png" alt="img" />
-			</li>
-			<li class="client" data-client="c3">
-				<img src="img/photodune.png" alt="img" />
-			</li>
-			<li class="client" data-client="c4">
-				<img src="img/themeforest.png" alt="img" />
-			</li>
-			<li class="client" data-client="c5">
-				<img src="img/videohive.png" alt="img" />
-			</li>
-		</ul>
-		<i class="resume_slider_right icon-caret-right"></i>
-
-		<div class="details c1">
-			<div class="top">
-				<img src="img/codecanyon.png" alt="img" />
-				<div class="description">Web Design</div>
-			</div>
-			<div class="body">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non magna eu leo placerat accumsan. Maecenas cursus augue id tincidunt sagittis. Duis mattis massa sit amet ipsum laoreet, et elementum felis vulputate. Nam convallis nibh elit, ac consequat diam faucibus a. Praesent ac hendrerit mauris. Donec felis nunc, mattis a scelerisque id, euismod ut neque. Sed lobortis cursus scelerisque. Suspendisse quis tortor ac dolor consectetur auctor. Nulla facilisi. Ut auctor malesuada risus, quis lacinia ligula.
-			</div>
-		</div>
-		<div class="details c2">
-			<div class="top">
-				<img src="img/graphicriver.png" alt="img" />
-				<div class="description">Web Developer</div>
-			</div>
-			<div class="body">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non magna eu leo placerat accumsan. Maecenas cursus augue id tincidunt sagittis. Duis mattis massa sit amet ipsum laoreet, et elementum felis vulputate. Nam convallis nibh elit, ac consequat diam faucibus a. Praesent ac hendrerit mauris. Donec felis nunc, mattis a scelerisque id, euismod ut neque. Sed lobortis cursus scelerisque. Suspendisse quis tortor ac dolor consectetur auctor. Nulla facilisi. Ut auctor malesuada risus, quis lacinia ligula.
-			</div>
-		</div>
-		<div class="details c3">
-			<div class="top">
-				<img src="img/photodune.png" alt="img" />
-				<div class="description">Web Design</div>
-			</div>
-			<div class="body">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non magna eu leo placerat accumsan. Maecenas cursus augue id tincidunt sagittis. Duis mattis massa sit amet ipsum laoreet, et elementum felis vulputate. Nam convallis nibh elit, ac consequat diam faucibus a. Praesent ac hendrerit mauris. Donec felis nunc, mattis a scelerisque id, euismod ut neque. Sed lobortis cursus scelerisque. Suspendisse quis tortor ac dolor consectetur auctor. Nulla facilisi. Ut auctor malesuada risus, quis lacinia ligula.
-			</div>
-		</div>
-		<div class="details c4">
-			<div class="top">
-				<img src="img/themeforest.png" alt="img" />
-				<div class="description">Web Developer</div>
-			</div>
-			<div class="body">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non magna eu leo placerat accumsan. Maecenas cursus augue id tincidunt sagittis. Duis mattis massa sit amet ipsum laoreet, et elementum felis vulputate. Nam convallis nibh elit, ac consequat diam faucibus a. Praesent ac hendrerit mauris. Donec felis nunc, mattis a scelerisque id, euismod ut neque. Sed lobortis cursus scelerisque. Suspendisse quis tortor ac dolor consectetur auctor. Nulla facilisi. Ut auctor malesuada risus, quis lacinia ligula.
-			</div>
-		</div>
-		<div class="details c5">
-			<div class="top">
-				<img src="img/videohive.png" alt="img" />
-				<div class="description">Web Design</div>
-			</div>
-			<div class="body">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non magna eu leo placerat accumsan. Maecenas cursus augue id tincidunt sagittis. Duis mattis massa sit amet ipsum laoreet, et elementum felis vulputate. Nam convallis nibh elit, ac consequat diam faucibus a. Praesent ac hendrerit mauris. Donec felis nunc, mattis a scelerisque id, euismod ut neque. Sed lobortis cursus scelerisque. Suspendisse quis tortor ac dolor consectetur auctor. Nulla facilisi. Ut auctor malesuada risus, quis lacinia ligula.
-			</div>
-		</div>
-
-	</div>
-	-->
-	<!-- /Clients -->
-
-	<div class="clear"></div>
-
-</div>
-<!-- /Resume Page -->
-
-			<!-- Portfolio Page -->
-<div id="portfolio_page">
-	<h1 class="page_title color_title">Portfolio</h1>
-
-	<hr class="hr_line" />
-
-	<!-- Portfolio Filter -->
-	<ul class="portfolio_filter">
-		<li class="filter active" data-filter="all">All</li>
-		<!--
-	    <li class="filter" data-filter="webdesign">Web Design</li>
-	    <li class="filter" data-filter="graphicdesign">Graphic Design</li>
-	    <li class="filter" data-filter="marketing">Marketing</li>
-	    -->
-	    <li class="filter" data-filter="project">Project</li>
-	    <li class="filter" data-filter="assignment">Assignment</li>
-	</ul>
-	<!-- /Portfolio Filter -->
-
-	<!-- Portfolio Grid -->
-	<div id="portfolio_grid">
-
-		<div class="mix project">
-	    	<div class="details">
-	    		<h2>LibreOffice</h2>
-	    		<p>Open Source Contribution</p>
-	    		<div class="link"><a href="https://wiki.documentfoundation.org/Development" target="_blank">Go to project</a></div>
-	    		<div class="client">C++</div>
-	    		<div class="description">I am currently fixing bugs and working on feature enhancement requests reported in <a href="https://bugs.freedesktop.org/" target="_blank">Bugzilla</a>.<br>
-	    		My goal is to become a member of the 'Committers' group and get unrestricted commit access by committing a few more successful patches. Then, I will be able to commit directly to LibreOffice master branch and help other new developers to push/merge patches.<br><br>
-	    		Here's a list of bugs/requests I have worked on and submitted patches about:<br>
-	    		<a href="https://bugs.freedesktop.org/show_bug.cgi?id=72995" target="_blank">fdo#72995</a> - Goal Seek when Formula cell does not contain formula it is unclear which cell is error message referenced at<br>
-	    		<a href="https://bugs.freedesktop.org/show_bug.cgi?id=72661" target="_blank">fdo#72661</a> - FORMATTING: Wrap text activates hyphenation by default<br><br>
-	    		</div>
-	    	</div>
-	    	<div class="img_outer">
-	    		<img src="img/libreoffice.png" alt="img" width="622" height="209" />
-		    	<div class="overlay">
-		    		<i class="icon-search"></i>
-		    	</div>
-		    </div>
-		</div>
-
-		<div class="mix project">
-	    	<div class="details">
-	    		<h2>Daily Good</h2>
-	    		<p>Android Application Development</p>
-	    		<div class="link"><a href="project/daily-good.html" target="_blank">See code</a></div>
-	    		<div class="client">Java (Android)</div>
-	    		<div class="description">The main tasks I had worked on are creating code between the front-end part and back-end server such as HTTP request, JSON parsing, and so on. Initially, the HTTP-related code looked confusing and complicated in Java, so I simplified both HTTP and JSON parsing as much as possible so that my teammates were able to communicate with the back-end server easier by simply calling the functions I created. I made our entire code simpler, more understandable, and easier to read.<br><br>
-	    		</div>
-	    		<div class="social">
-	    			<a href="https://play.google.com/store/apps/details?id=com.desai.Daily_Good" target="_blank"><i class="icon-external-link"></i></a>
-	    		</div>
-	    	</div>
-	    	<div class="img_outer">
-	    		<img src="img/Daily-Goodness.jpg" alt="img" width="622" height="209" />
-		    	<div class="overlay">
-		    		<i class="icon-search"></i>
-		    	</div>
-	    	</div>
-	    </div>
-
-	    <div class="mix project assignment">
-	    	<div class="details">
-	    		<h2>LoL Web Application</h2>
-	    		<p>Web Development</p>
-	    		<div class="link"><a href="project/LoL.html" target="_blank">See code</a></div>
-	    		<div class="client">HTML, CSS, JavaScript, PHP, MySQL</div>
-	    		<div class="description">The application provides information about champions, items, runes, and abilities from a famous PC game, “League of Legends” aka. LoL. More importantly, it provides an interface where users can try out their particular settings or builds on a champion.<br><br>
-	    		</div>
-	    		<div class="social">
-	    			<a href="http://pentakill.web.engr.illinois.edu/" target="_blank" class="google"><i class="icon-external-link"></i></a>
-	    			<a href="http://www.youtube.com/watch?v=2HJtk7h2xuk\\" target="_blank" class="youtube"><i class="icon-youtube"></i></a>
-	    		</div>
-	    	</div>
-	    	<div class="img_outer">
-	    		<img src="img/LoL.png" alt="img" width="622" height="209" />
-		    	<div class="overlay">
-		    		<i class="icon-search"></i>
-		    	</div>
-	    	</div>
-	    </div>
-	    <div class="mix assignment">
-	    	<div class="details">
-	    		<h2>My, oh, my, oh, malloc!</h2>
-	    		<p>Implementation of malloc(), calloc(), realloc(), and free()</p>
-	    		<div class="link"><a href="project/malloc.html" target="_blank">See code</a></div>
-	    		<div class="client">C</div>
-	    		<div class="description">I re-implemented the function heap-memory function calls <code id="youn">malloc()</code>, <code id="youn">calloc()</code>, <code id="youn">realloc()</code>, and <code id="youn">free()</code> in much the same way that valgrind re-implements many C-calls to understand how my program is using memory. Also, I improved my allocator's speed and/or efficiency of memory use as much as possible.
-	    		<br><br>
-	    		</div>
-	    	</div>
-	    	<div class="img_outer">
-	    		<img src="img/stack_and_heap.gif" alt="img" width="622" height="209" />
-		    	<div class="overlay">
-		    		<i class="icon-search"></i>
-		    	</div>
-	    	</div>
-		</div>
-	    <div class="mix assignment">
-	    	<div class="details">
-	    		<h2>Maze Solving</h2>
-	    		<p>Implementation of maze solving algorithms and a cool GUI</p>
-	    		<div class="link"><a href="project/maze-solving.html" target="_blank">See code</a></div>
-	    		<div class="client">Java</div>
-	    		<div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non magna eu leo placerat accumsan. Maecenas cursus augue id tincidunt sagittis. Duis mattis massa sit amet ipsum laoreet, et elementum felis vulputate. Nam convallis nibh elit, ac consequat diam faucibus a.
-	    		<br><br>
-	    		</div>
-	    	</div>
-	    	<div class="img_outer">
-	    		<img src="img/maze.jpg" alt="img" width="622" height="209" />
-		    	<div class="overlay">
-		    		<i class="icon-search"></i>
-		    	</div>
-	    	</div>
-		</div>
-		<!--
-	    <div class="mix marketing graphicdesign">
-	    	<div class="details">
-	    		<h2>Project Title</h2>
-	    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non magna eu leo placerat accumsan.</p>
-	    		<div class="link"><a href="#">Go to project</a></div>
-	    		<div class="client">Client Name</div>
-	    		<div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non magna eu leo placerat accumsan. Maecenas cursus augue id tincidunt sagittis. Duis mattis massa sit amet ipsum laoreet, et elementum felis vulputate. Nam convallis nibh elit, ac consequat diam faucibus a.</div>
-	    		<div class="social">
-	    			<a href="#" class="facebook"><i class="icon-facebook"></i></a>
-	    			<a href="#" class="twitter"><i class="icon-twitter"></i></a>
-	    			<a href="#" class="youtube"><i class="icon-youtube"></i></a>
-	    			<a href="#" class="google"><i class="icon-google-plus"></i></a>
-	    		</div>
-	    	</div>
-	    	<div class="img_outer">
-	    		<img src="img/portfolio6_r.jpg" alt="img" />
-		    	<div class="overlay">
-		    		<i class="icon-search"></i>
-		    	</div>
-	    	</div>
-		</div>
-		-->
-		<div class="gap"></div>
-	</div>
-	<!-- /Portfolio Grid -->
-
-	<div class="clear"></div>
-</div>
-<!-- /Portfolio Page -->
+			{% include resume.html %}
+			{% include portfolio.html %}
 			
 
 			<!-- Blog Page -->
@@ -1730,7 +1163,7 @@
 				<!-- Contact Info -->
 				<div class="contact_info">
 
-					<span class="name"><i class="icon-user"></i><span class="text">Jiwoong Youn</span></span>
+					<span class="name"><i class="icon-user"></i><span class="text">{{ site.name }}</span></span>
 
 					<span class="address"><i class="icon-map-marker"></i><span class="text">1317 West Ridge Lane<br>Champaign, IL 61822</span></span>
 
@@ -1769,10 +1202,10 @@
 
 				<!-- Contact Buttons -->
 				<div class="social_btns">
-					<a href="http://www.linkedin.com/in/yjw9012" target="_blank" class="icon-linkedin"></a>
-					<a href="https://github.com/yjw9012" target="_blank" class="icon-github"></a>
+					<a href="http://www.linkedin.com/in/yjw9012" target="_blank" class="icon-linkedin"></a>					
 					<a href="https://www.facebook.com/jiwoong.youn" target="_blank" class="icon-facebook"></a>	
 					<!--
+					<a href="https://github.com/yjw9012" target="_blank" class="icon-github"></a>
 					<a href="#" class="icon-google-plus"></a>
 					<a href="#" class="icon-dribbble"></a>
 					<a href="#" class="icon-flickr"></a>
@@ -1795,15 +1228,7 @@
 		</div>
 		<!-- /Main Content -->
 
-		<!-- Footer -->
-<!--
-<div id="footer">
-	<div class="inner">
-		2013 &copy; John Doe. Voxr Responsive Personal vCard Template by <a href="http://www.codecanyon.net/user/Maxdp?ref=Maxdp">Maxdp</a>
-	</div>
-</div>
--->
-<!-- /Footer -->
+		{% include footer.html %}
 
 	</div>
 	<!-- /Wrapper -->
