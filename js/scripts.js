@@ -10,7 +10,7 @@ jQuery.easing['jswing']=jQuery.easing['swing'];jQuery.extend(jQuery.easing,{def:
 /*
  * jQuery hashchange event - v1.3 - 7/21/2010
  * http://benalman.com/projects/jquery-hashchange-plugin/
- * 
+ *
  * Copyright (c) 2010 "Cowboy" Ben Alman
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
@@ -57,12 +57,12 @@ $(document).ready(function(){
     };
 
     var sequence = $("#sequence").sequence(options).data("sequence");
-	
+
 	//google maps
 	function initialize() {
 		var mapOptions = {
-			zoom: 4,
-			center: new google.maps.LatLng(40.129362, -88.314292),
+			zoom: 8,
+			center: new google.maps.LatLng(37.3867526,-122.0294774),
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		}
 		map = new google.maps.Map(document.getElementById('google_maps'), mapOptions);
@@ -88,7 +88,7 @@ $(document).ready(function(){
 	}
 
 	google.maps.event.addDomListener(window, 'load', initialize);
-	
+
 
 	//main menu
 	$(".menu ul li a").click(function(){
@@ -335,7 +335,7 @@ $(document).ready(function(){
 		if ($(this).hasClass("resume_slider_left")){
 			if ($(".clients_list .client:nth-child("+(current-1)+")").is(":visible")){
 				var width = $(".clients_list .client:nth-child("+(current-1)+")").width();
-				
+
 				$(".clients_list .client:nth-child("+(current-1)+")").animate({
 					'marginLeft' : 0//0
 				}, 100);
@@ -429,7 +429,7 @@ $(document).ready(function(){
 
 		//pretty photo
 		$("a[class^='prettyPhoto']").prettyPhoto();
-		
+
 		goToByScroll("portfolio_info");
 
 	});
@@ -480,7 +480,7 @@ $(document).ready(function(){
 
 			in_post_view = true;
 		});
-		
+
 		return false;
 
 	});
@@ -541,7 +541,7 @@ $(document).ready(function(){
 			},
 			dataType: 'json',
 			success: $.proxy(function(data) {
-				
+
 				if (data.error == false){
 					$(this).next().removeClass("error").addClass("success").html(data.response);
 					name.val('');
@@ -572,7 +572,7 @@ $(document).ready(function(){
 		}
 
 		if ($("#content > div#blog_page").is(":visible") && !$("#content > div#blog_page .posts").hasClass("animated") && !in_post_view){
-			
+
 			$("#content > div#blog_page .posts > .post").each(function(i){
 
 				if($(this).offset().top + 300 < $(window).scrollTop() + $(window).outerHeight() && !$(this).hasClass("animated") && in_post_view == false) {
@@ -596,10 +596,10 @@ $(document).ready(function(){
 				$("#content > div#blog_page .posts > .post").addClass("fullOpacity");
 			}
 		}
-			
+
 
 	});
-	
+
 	$(".tabs_box .tabs_menu li").click(function(){
 		$(".tabs_box .tabs_menu li").removeClass("active");
 		$(this).addClass("active");
@@ -667,7 +667,7 @@ $(document).ready(function(){
 
 		//add active class to new page
 		$('.menu ul li a[href="#'+page+'"]').addClass("active");
-		
+
 		//show new page
 
 		if (page == 'home'){
