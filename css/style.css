@@ -37,8 +37,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -75,7 +75,7 @@ h6{
     font-size:8px;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -129,8 +129,8 @@ a:hover{
 	text-decoration: underline;
 }
 
-hr.hr_line { 
-    border: 0; 
+hr.hr_line {
+    border: 0;
     height: 1px;
     position: relative;
     margin: 0.5em 0; /* Keep other elements away from pseudo elements*/
@@ -4210,7 +4210,7 @@ body.purple_color .menu .right a.cv:hover{
 	background: #B96FED;
 }
 
-body.purple_color .menu .right a.cv:active{	
+body.purple_color .menu .right a.cv:active{
 	background: #C37DF5;
 	box-shadow: none;
 	padding-top: 16px;
@@ -6051,7 +6051,7 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 	}
 
 	#wrapper #header .right a.last1{
-		
+
 	}
 
 	#wrapper #header .right a.last2{
@@ -6143,7 +6143,7 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 	#wrapper #content > div#about_page{
 		width: 100%;
 	}
-	
+
 	#wrapper #content > div#home_page .page_title{
 		width: 86%;
 	}
@@ -6357,7 +6357,7 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 		border:none;
 		margin-left: 0;
 		padding-left: 0;
-		margin-top:10px;	
+		margin-top:10px;
 	}
 
 	#wrapper #content > div#blog_page .posts{
